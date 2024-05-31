@@ -1,0 +1,82 @@
+1) How to Install Prometheus and Grafana on Ubuntu 22.04 LTS — Configure Grafana Dashboard:-
+
+URL:- https://ibrahims.medium.com/how-to-install-prometheus-and-grafana-on-ubuntu-22-04-lts-configure-grafana-dashboard-5d11e3cb3cfd
+
+2) How to inject credentials in Jenkins using Hashicorp vault:-
+
+URL:- https://www.youtube.com/watch?v=JDZ1Z9wO2XU
+
+
+3) How to Install ArgoCD on Minikube and Deploy an App:- 
+
+URL- https://www.fosstechnix.com/how-to-install-argocd-on-minikube/
+
+
+4) Deploy an Application Using Flux:-
+
+URL- https://www.webagesolutions.com/blog/deploy-an-application-using-flux
+
+5) How to deploy an application to AWS EC2 Instance using Terraform and Ansible:-
+
+URL- https://dev.to/mariehposa/how-to-deploy-an-application-to-aws-ec2-instance-using-terraform-and-ansible-3e78
+
+6) Ansible community documentation:- 
+
+URL- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/find_module.html
+
+7) Create AWS Resources Using AWS CDK:-
+
+URL- https://medium.com/@agraharibrijesh77/how-to-create-an-ec2-instance-using-aws-cdk-856e407fde07
+
+8) Monitoring Aws Ec2 Instance with Nagios on Ubuntu:-
+
+URL- https://medium.com/@patilhimanshu139/monitoring-aws-ec2-instance-with-nagios-on-ubuntu-57c89b09016b#:~:text=Go%20to%20the%20nagios%20console,in%20the%20nagios%20core%20%E2%80%A6..
+
+"host.cfg"
+
+define host {
+                use                     linux-server
+                host_name               ip-172-31-16-19
+                alias                   ec2-instance
+                address                 54.90.84.30
+}
+define service {
+    use                     generic-service
+    host_name               ip-172-31-16-19
+    service_description     PING
+    check_command           check_ping!100.0,20%!500.0,60%
+}
+ 
+ 
+define service {
+    use                     generic-service
+    host_name               ip-172-31-16-19
+    service_description     check disck
+    check_command           check_nrpe!check_disk
+
+
+
+9) Install and open Grafana UI for monitor AWS service count:-
+
+[4/1 5:57 PM] Agrahari, Brijesh Kumar
+# Install prerequisites 
+sudo apt-get update 
+sudo apt-get install -y apt-transport-https software-properties-common wget 
+  
+# Add Grafana repository key 
+sudo wget -q -O /usr/share/keyrings/grafana.key https://apt.grafana.com/gpg.key 
+  
+# Add Grafana repository 
+echo "deb [signed-by=/usr/share/keyrings/grafana.key] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list 
+  
+# Update package lists 
+sudo apt-get update 
+  
+# Install Grafana 
+sudo apt-get install -y grafana 
+  
+# Start Grafana Server 
+sudo systemctl start grafana-server 
+
+# Open UI 
+https://<public_ip>:3000
